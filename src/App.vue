@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <Area v-on:setImgSrc="setImgSrc"/>
+    <textarea v-model="value"></textarea>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Area from "./components/Area.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    Area
+  },
+  data: function() {
+    return {
+      value: '',
+    }
+  },
+  methods: {
+    setImgSrc: function (value) {
+      this.value = value;
+      
+    }
   }
-}
+};
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+textarea {
+  display: block;
+  height: 200px;
+  max-width: 100%;
+  min-width: 100%;
+  padding: calc(0.75em - 1px);
+  resize: vertical;
+  box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
+  width: 100%;
+  background-color: #fff;
+  border-color: #dbdbdb;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 </style>
